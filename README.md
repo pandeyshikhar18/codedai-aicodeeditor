@@ -12,7 +12,7 @@
 
 ## 📸 Preview
 
-![CodAIED Screenshot](https://via.placeholder.com/1200x600?text=CodAIED+Preview) <!-- Replace with actual screenshot URL -->
+![CodAIED Screenshot](Screenshot 2025-06-24 110358.png) <!-- Replace with actual screenshot URL -->
 
 ## 📁 Project Structure
 
