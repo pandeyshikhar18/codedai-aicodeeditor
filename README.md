@@ -4,7 +4,7 @@
 
 ## 🚀 Features
 
-- ✍️ **Live Code Editor** with syntax highlighting
+- ✍️ **Live Code Editor** with syntax highlighting: https://ai-code-editor-pi.vercel.app/
 - 💬 **AI Assistant** for code explanations, suggestions & fixes
 - 🎙️ **Voice-to-Code** – speak your logic, get code!
 - 🌗 **Dark & Light Mode** toggle
