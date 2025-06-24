@@ -13,7 +13,6 @@
 ## 📸 Preview
 
 ![CodAIED Screenshot](./public/screenshot.png)
-)
 
 ## 📁 Project Structure
 
