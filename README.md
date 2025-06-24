@@ -12,7 +12,9 @@
 
 ## 📸 Preview
 
-![CodAIED Screenshot](https://user-images.githubusercontent.com/pandeyshikhar18/screenshot.png
+## 📸 Preview
+
+![CodAIED Screenshot](./public/screenshot.png)
 )
 
 ## 📁 Project Structure
