@@ -80,5 +80,3 @@ GitHub: @pandeyshikhar18
 
 📄 License
 This project is licensed under the MIT License.
-
-You're now ready to impress on GitHub ✨
