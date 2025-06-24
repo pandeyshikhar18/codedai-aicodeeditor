@@ -81,21 +81,4 @@ GitHub: @pandeyshikhar18
 📄 License
 This project is licensed under the MIT License.
 
-python
-Copy
-Edit
-
----
-
-### ✅ To Use:
-
-1. Save this as `README.md` inside the root folder.
-2. Add a screenshot of your app and update the placeholder link.
-3. Optional: Add a `LICENSE` file if you want.
-
-Let me know if you'd like to include:
-- A demo video
-- API usage details
-- Contribution guide
-
 You're now ready to impress on GitHub ✨
