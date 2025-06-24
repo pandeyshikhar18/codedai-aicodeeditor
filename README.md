@@ -12,7 +12,8 @@
 
 ## 📸 Preview
 
-![CodAIED Screenshot](https://user-images.githubusercontent.com/your-id/Screenshot 2025-06-24 110358.png)
+![CodAIED Screenshot](https://user-images.githubusercontent.com/your-id/screenshot.png
+)
 
 ## 📁 Project Structure
 
