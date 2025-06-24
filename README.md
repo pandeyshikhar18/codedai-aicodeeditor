@@ -12,8 +12,6 @@
 
 ## 📸 Preview
 
-## 📸 Preview
-
 ![CodAIED Screenshot](./public/screenshot.png)
 )
 
