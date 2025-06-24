@@ -1,16 +1,101 @@
-<<<<<<< HEAD
-# React + Vite
+# CodAIED 🧠💻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**CodAIED** (AI Code Editor) is a modern, sleek, and developer-friendly AI-powered code editor that combines real-time code editing, voice-to-code features, and an integrated AI assistant for help, explanation, and generation — all in one web app.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✍️ **Live Code Editor** with syntax highlighting
+- 💬 **AI Assistant** for code explanations, suggestions & fixes
+- 🎙️ **Voice-to-Code** – speak your logic, get code!
+- 🌗 **Dark & Light Mode** toggle
+- 🖥️ Built with **React**, **Monaco Editor**, **TypeScript**, and **OpenRouter API**
 
-## Expanding the ESLint configuration
+## 📸 Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# ai-code-editor
->>>>>>> 040c65b19f526a8c3760fdfda1dcc7be495e95b6
+![CodAIED Screenshot](https://via.placeholder.com/1200x600?text=CodAIED+Preview) <!-- Replace with actual screenshot URL -->
+
+## 📁 Project Structure
+
+```bash
+ai-code-editor/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── ChatPane.tsx
+│   │   ├── CodeEditor.tsx
+│   │   └── VoiceToCode.tsx
+│   ├── context/
+│   ├── utils/
+│   │   └── api.ts
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── .gitignore
+├── index.html
+├── package.json
+└── vite.config.js
+⚙️ Setup & Installation
+bash
+Copy
+Edit
+# Clone the repo
+git clone https://github.com/pandeyshikhar18/ai-code-editor.git
+cd ai-code-editor
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+🧠 How It Works
+Monaco Editor powers the code editing UI.
+
+OpenRouter API provides GPT-style responses to assist and explain code.
+
+SpeechRecognition API converts spoken words to code input.
+
+Dark/Light themes are handled via CSS variables and toggled globally.
+
+🌐 Deployment
+This project is deployed using Vercel. After linking the GitHub repository, Vercel automatically builds and hosts the site.
+
+🔗 Live: https://ai-code-editor.vercel.app
+
+🛠️ Tech Stack
+React
+
+TypeScript
+
+Vite
+
+Monaco Editor
+
+OpenRouter API
+
+Vercel
+
+🙋‍♂️ Author
+Developed with ❤️ by Shikhar Pandey
+GitHub: @pandeyshikhar18
+
+📄 License
+This project is licensed under the MIT License.
+
+python
+Copy
+Edit
+
+---
+
+### ✅ To Use:
+
+1. Save this as `README.md` inside the root folder.
+2. Add a screenshot of your app and update the placeholder link.
+3. Optional: Add a `LICENSE` file if you want.
+
+Let me know if you'd like to include:
+- A demo video
+- API usage details
+- Contribution guide
+
+You're now ready to impress on GitHub ✨
