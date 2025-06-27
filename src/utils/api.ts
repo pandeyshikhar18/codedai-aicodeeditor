@@ -1,10 +1,15 @@
+const COHERE_API_KEY = "Bearer P7pjFKrfS0C3Wuf4wUs7tXgKzkvsQ74upPW7B4cL"; // Replace with your working key
+
+const cohereHeaders = {
+  Authorization: COHERE_API_KEY,
+  "Content-Type": "application/json",
+};
+
+// 🎙️ Voice-to-Code
 export async function voiceToCode(prompt: string): Promise<string> {
   const res = await fetch("https://api.cohere.ai/v1/generate", {
     method: "POST",
-    headers: {
-      Authorization: "Bearer P7pjFKrfS0C3Wuf4wUs7tXgKzkvsQ74upPW7B4cL",
-      "Content-Type": "application/json",
-    },
+    headers: cohereHeaders,
     body: JSON.stringify({
       model: "command-r-plus",
       prompt: `Convert this natural language to valid code:\n${prompt}`,
@@ -23,14 +28,11 @@ export async function voiceToCode(prompt: string): Promise<string> {
   return data.generations[0].text.trim();
 }
 
-// Explains code (used in ChatPane) using Cohere
+// 💬 Explain Code (Chat Assistant)
 export async function getCompletion(prompt: string): Promise<string> {
   const res = await fetch("https://api.cohere.ai/v1/generate", {
     method: "POST",
-    headers: {
-      Authorization: "Bearer P7pjFKrfS0C3Wuf4wUs7tXgKzkvsQ74upPW7B4cL",
-      "Content-Type": "application/json",
-    },
+    headers: cohereHeaders,
     body: JSON.stringify({
       model: "command-r-plus",
       prompt: `Explain this code:\n${prompt}`,
