@@ -32,39 +32,66 @@ const VoiceToCode: React.FC<VoiceToCodeProps> = ({ onTranscript }) => {
       setIsListening(false);
     };
 
+    recognition.onerror = (e: any) => {
+      console.error("Speech recognition error:", e);
+      setError(`🎤 Voice error: ${e.error}`);
+      setIsListening(false);
+    };
+
     recognition.onresult = async (event: any) => {
       const transcript = event.results[0][0].transcript;
       console.log("🎙️ Voice input:", transcript);
 
-      if (transcript.trim()) {
-        try {
-          const code = await voiceToCode(transcript);
-          onTranscript(code); // Send real code back to App.tsx
-        } catch (err) {
-          console.error("AI error:", err);
-          setError("❌ Failed to generate code from voice.");
-        }
-      } else {
+      if (!transcript.trim()) {
         setError("⚠️ No speech detected. Try again.");
+        return;
       }
-    };
 
-    recognition.onerror = (e: any) => {
-      console.error("Speech recognition error:", e);
-      setError(`Voice error: ${e.error}`);
-      setIsListening(false);
+      try {
+        const code = await voiceToCode(transcript);
+        onTranscript(code);
+      } catch (err) {
+        console.error("❌ AI error:", err);
+        setError("❌ Failed to generate code from voice.");
+      }
     };
 
     recognition.start();
   };
 
   return (
-    <div className="voice-to-code-wrapper">
-      <button className="theme-button" onClick={startListening} disabled={isListening}>
-        {isListening ? "🎙️ Listening..." : "🎤 Start Voice to Code"}
+    <>
+      <button
+        className="theme-button"
+        onClick={startListening}
+        disabled={isListening}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '20px',
+          zIndex: 1000,
+        }}
+      >
+        {isListening ? '🎙️ Listening...' : '🎤 Start Voice to Code'}
       </button>
-      {error && <p style={{ color: "red", marginTop: "8px" }}>{error}</p>}
-    </div>
+      {error && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '60px',
+            left: '20px',
+            color: 'red',
+            background: '#fff0f0',
+            padding: '6px 12px',
+            borderRadius: '6px',
+            zIndex: 1000,
+          }}
+        >
+          {error}
+        </div>
+      )}
+    </>
   );
 };
+
 export default VoiceToCode;

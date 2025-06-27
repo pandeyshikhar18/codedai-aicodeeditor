@@ -5,8 +5,10 @@ import ChatPane from './components/ChatPane';
 import './App.css';
 import './index.css';
 
-const App = () => {
-  const [code, setCode] = useState('// Start coding...');
+const App: React.FC = () => {
+  const [code, setCode] = useState<string>(
+    `// Start coding...\nconsole.log("Hello from CodAIED!");`
+  );
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   const toggleTheme = () => {
@@ -19,8 +21,17 @@ const App = () => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  const handleVoice = (codeBlock: string) => {
-    setCode((prev) => prev + `\n${codeBlock}`);
+  const handleVoice = (spokenCode: string) => {
+    setCode((prev) => prev + `\n${spokenCode}`);
+  };
+
+  const handleRunCode = () => {
+    try {
+      const result = eval(code);
+      alert(`✅ Output: ${result}`);
+    } catch (error: any) {
+      alert(`❌ Error: ${error.message}`);
+    }
   };
 
   return (
@@ -32,17 +43,24 @@ const App = () => {
         </button>
       </header>
 
+      {/* 🟡 Instruction Bar */}
+      <div className="app-alert">
+        ⚠️ This is a <strong>Beta Version</strong>. Currently, only <strong>JavaScript</strong> is supported for execution.
+        Voice-to-code works best in <strong>Google Chrome</strong>.
+      </div>
+
       <div className="main-content">
         <div className="editor-pane">
-          <CodeEditor value={code} onChange={setCode} />
-          <div className="voice-to-code-wrapper">
-            <VoiceToCode onTranscript={handleVoice} />
-          </div>
+          <CodeEditor value={code} onChange={setCode} onRun={handleRunCode} />
         </div>
+
         <div className="chat-pane">
           <ChatPane />
         </div>
       </div>
+
+      {/* 🎤 Floating VoiceToCode Button */}
+      <VoiceToCode onTranscript={handleVoice} />
     </div>
   );
 };

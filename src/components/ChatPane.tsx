@@ -9,20 +9,25 @@ type Message = {
 const ChatPane: React.FC = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const send = async () => {
-    if (!input.trim()) return;
+    const trimmed = input.trim();
+    if (!trimmed || loading) return;
 
-    const userMessage: Message = { type: "user", text: input };
+    const userMessage: Message = { type: "user", text: trimmed };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setLoading(true);
 
     try {
-      const reply = await getCompletion(input);
+      const reply = await getCompletion(trimmed);
       setMessages((prev) => [...prev, { type: "ai", text: reply }]);
     } catch (err) {
       setMessages((prev) => [...prev, { type: "ai", text: "❌ Error from AI." }]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,7 +59,9 @@ const ChatPane: React.FC = () => {
           onKeyDown={handleKeyPress}
           placeholder="Ask your AI assistant..."
         />
-        <button onClick={send}>Send</button>
+        <button onClick={send} disabled={loading}>
+          {loading ? "..." : "Send"}
+        </button>
       </div>
 
       <div className="chat-footer">

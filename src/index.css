@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap');
+
 :root {
   --bg: #ffffff;
   --text: #1e1e1e;
@@ -9,7 +10,6 @@
   --primary-text: #ffffff;
   --user-bubble: #daf1ff;
   --ai-bubble: #f0f0f0;
-  
 }
 
 html[data-theme='dark'] {
@@ -24,14 +24,6 @@ html[data-theme='dark'] {
   --ai-bubble: #2a2a3d;
 }
 
-.app-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--primary, #00bcd4);
-  user-select: none;
-}
 body {
   margin: 0;
   padding: 0;
@@ -54,14 +46,17 @@ body {
   padding: 10px 24px;
   background-color: var(--pane-bg);
   border-bottom: 1px solid var(--border);
+  gap: 16px;
 }
 
 .app-title {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 22px;
   font-weight: bold;
   text-align: center;
   flex-grow: 1;
   color: var(--primary);
+  user-select: none;
 }
 
 .theme-toggle {
@@ -87,14 +82,10 @@ body {
   padding: 12px;
   overflow: hidden;
 }
+
 .editor-pane .monaco-editor,
 .editor-pane .monaco-editor-background {
   flex: 1 1 auto;
-}
-
-.voice-to-code-wrapper {
-  margin-top: 10px;
-  align-self: flex-start;
 }
 
 .chat-pane {
@@ -106,24 +97,16 @@ body {
   overflow-y: auto;
 }
 
-.app-footer {
-  text-align: center;
-  padding: 10px;
-  font-size: 13px;
-  background-color: var(--pane-bg);
-  border-top: 1px solid var(--border);
-  color: var(--text);
-}
-
-/* Optional: Scrollbar tweaks */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: var(--border);
   border-radius: 3px;
 }
+
+/* Chat Styles */
 .chat-container {
   height: 100%;
   display: flex;
@@ -187,15 +170,10 @@ body {
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
 .chat-input button:hover {
   background-color: #0097b3;
 }
 
-.voice-to-code-wrapper {
-  margin-top: 5px;
-  align-self: flex-start;
-}
 .chat-footer {
   font-size: 11px;
   text-align: center;
@@ -204,18 +182,46 @@ body {
   opacity: 0.5;
 }
 
-
-.theme-button {
-  padding: 10px 16px;
-  background-color: var(--primary, #00bcd4);
-  color: var(--text-on-primary, #000);
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+/* Run & Voice Button Layout */
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
 }
 
+/* Shared Button Styling */
+.run-button,
+.theme-button {
+  padding: 10px 16px;
+  background-color: var(--primary);
+  color: var(--primary-text);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+.run-button:hover,
 .theme-button:hover {
-  background-color: #00a5b5;
+  background-color: #0097b3;
+}
+
+/* Alert Styling */
+.app-alert {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .app-alert {
+  background-color: #2d2a00;
+  color: #ffe58a;
+  border-color: #4d4d00;
 }
