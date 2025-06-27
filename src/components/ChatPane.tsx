@@ -1,67 +1,32 @@
-import React, { useState, useEffect, useRef } from "react";
-import { getCompletion } from "../utils/api";
+export async function getCompletion(prompt: string): Promise<string> {
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer YOUR_API_KEY",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful coding assistant. Explain the user's code.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+    }),
+  });
 
-type Message = {
-  type: "user" | "ai";
-  text: string;
-};
+  const data = await res.json();
+  console.log("🔍 API Response:", data); // <-- Add this
 
-const ChatPane: React.FC = () => {
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
+  if (!data.choices || !data.choices[0]?.message?.content) {
+    throw new Error("No explanation returned from AI.");
+  }
 
-  const send = async () => {
-    if (!input.trim()) return;
+  return data.choices[0].message.content;
+}
 
-    const userMessage: Message = { type: "user", text: input };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
-
-    try {
-      const reply = await getCompletion(input);
-      setMessages((prev) => [...prev, { type: "ai", text: reply }]);
-    } catch (err) {
-      setMessages((prev) => [...prev, { type: "ai", text: "❌ Error from AI." }]);
-    }
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") send();
-  };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }
-  }, [messages]);
-
-  return (
-    <div className="chat-container">
-      <div ref={containerRef} className="chat-messages">
-        {messages.map((m, i) => (
-          <div key={i} className={`chat-bubble ${m.type}`}>
-            <strong>{m.type === "user" ? "You" : "AI"}:</strong> {m.text}
-          </div>
-        ))}
-      </div>
-
-      <div className="chat-input">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyPress}
-          placeholder="Ask your AI assistant..."
-        />
-        <button onClick={send}>Send</button>
-      </div>
-
-      <div className="chat-footer">
-        Developed by <strong>Shikhar</strong>
-      </div>
-    </div>
-  );
-};
-
-export default ChatPane;
