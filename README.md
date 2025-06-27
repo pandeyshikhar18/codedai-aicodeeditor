@@ -15,7 +15,7 @@
 
 ## 🌐 Live Demo
 
-👉 [Visit Live App on GitHub Pages](https://pandeyshikhar18.github.io/codedai-aicodeeditor)
+👉 [Visit Live App on GitHub Pages](https://pandeyshikhar18.github.io/codedai-aicodeeditor/)
 
 ---
 
