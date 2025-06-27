@@ -2,7 +2,7 @@ export async function getCompletion(prompt: string): Promise<string> {
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: {
-      Authorization: "Bearer YOUR_API_KEY",
+      Authorization: "Bearer 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",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
