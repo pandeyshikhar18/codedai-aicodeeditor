@@ -3,7 +3,7 @@ export async function voiceToCode(prompt: string): Promise<string> {
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: {
-      Authorization: "Bearer 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", // Replace with your real key
+      Authorization: "Bearer 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", // Replace with your real key
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
