@@ -1,6 +1,6 @@
 # ⚡ CodAIED – AI-Powered Code Editor
 
-![CodAIED Screenshot](public/screenshot.png)
+![CodAIED Screenshot](public/screenshot1.png)
 
 **CodAIED** is a modern AI-powered code editor that lets you:
 - 👨‍💻 Write code in multiple languages with syntax highlighting (Monaco Editor)
